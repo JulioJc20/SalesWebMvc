@@ -1,20 +1,26 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Serialization;
 
 namespace SalesWebMvc.Models
 {
     public class Seller
     {
         public int Id  { get; set; }
+        [Required(ErrorMessage = "{0} Requerid")]
+        [StringLength(100, MinimumLength =3, ErrorMessage ="{0} size should be between {2} and {1}")]
+
         public string Name { get; set; }
         [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "{0} Requerid")]
         public string Email { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name ="Birth Date")]
         [DataType(DataType.Date)]
+        [Required(ErrorMessage = "{0} Requerid")]
         public DateTime BirthDate  { get; set; }
         [DisplayFormat(DataFormatString = "{0:F2}")]
+
         [Display(Name ="Base Salary")]
+        [Required(ErrorMessage = "{0} Requerid")]
         public double BaseSalary{ get; set; }
 
         public Department Department { get; set; }
